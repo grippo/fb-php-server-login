@@ -14,21 +14,21 @@ class Login {
      *
      * @var string
      */
-    private  $app_id = '669394020144537';
+    private  $app_id;
 
     /**
      * Facebook APP Secret
      *
      * @var string
      */
-    private $app_secret = '2585852455f21712d38c3d31b5112744';
+    private $app_secret;
 
     /**
      * Callback URL used by the API
      *
      * @var string
      */
-    private $callback_url = 'https://ads.ranktool.org/fb/callback/';
+    private $callback_url;
 
     /**
      * Access token from Facebook
@@ -36,9 +36,6 @@ class Login {
      * @var string
      */
     private $access_token;
-
-    private $app_access_token = 'EAAJgz3DJFZAkBALZAZBA9FayyFyGEhRTHgcHJeQdJzdYgqmjMEPfa5mn4FbLzZA4oGZCZB8w5z6dJV4Rm6Vyi6H9a6oQwAy8MZC7QYRl9FHzceZALNNzWowsTqBKLfbyhpC0XZBms1KfUXZBXZBjVIZB8bRywP2C4F3GX0NBZBOTzwLZC2JgZDZD';
-    private $sandbox_ad_account_access_token = 'EAAJgz3DJFZAkBABZB822ZB8EA8L3tVQhCCFKknyZBdlh1zAt2HjoOpf95yUnmZCyt1cC5SxOoYcXo2VPQoKegpsG6dHpvhGIv5fYH4I8j65ZCfAStzO91Sx4gyXoiDEZBSIFekkeeu0S7s5LZCrrdKQLSjwbJueqOn9By2qY5AqArIWGfGoZAPqZCt3dwC5elhD97ZAxkXvuCnMwYZBYtZBY40J9Y';
 
         /**
      * Where we redirect our user after the process
