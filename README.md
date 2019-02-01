@@ -11,7 +11,9 @@ composer require facebook/graph-sdk
 composer require grippo/fb-php-server-login
 ```
 
-## Usage: INI File ".config.ini"
+## Usage: INI File 
+
+Create a ".config.ini" file with facebook credentials and permissions. Permissions is an array, add how much as you need.
 
 ```sh
 [facebook]
