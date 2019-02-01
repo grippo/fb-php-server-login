@@ -7,6 +7,7 @@ This repository contains the open source PHP files that allows you to access the
 The Facebook Login PHP can be installed with [Composer](https://getcomposer.org/). Run this command:
 
 ```sh
+composer require facebook/graph-sdk
 composer require grippo/fb-php-server-login
 ```
 
@@ -17,7 +18,7 @@ Simple GET example of a user's profile.
 ```php
 require_once __DIR__ . '/vendor/autoload.php'; // change path as needed
 
-$fb = new \Facebook\Facebook([
+$fb = new \FbServer\Login([
   'app_id' => '{app-id}',
   'app_secret' => '{app-secret}',
   'default_graph_version' => 'v2.10',
