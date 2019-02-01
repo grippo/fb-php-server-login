@@ -47,18 +47,20 @@ class Login {
     /**
      * User details from the API
      */
-    private $facebook_details;
     public $fb;
+    public $permissions;
 
 
     /**
      * ApprFacebook constructor.
      */
     //        'persistent_data_handler' => 'session'
-    public function __construct($appId, $appSecret, $appCallBack) {
+    public function __construct($appId, $appSecret, $appCallBack, $permissions) {
       $this->app_id = $appId;
       $this->app_secret = $appSecret;
       $this->callback_url = $appCallback;
+      $this->permissions = $permissions;
+
         //    'persistent_data_handler' => 'session'
         $this->fb = new Facebook([
             'app_id' => $this->app_id,
@@ -77,9 +79,7 @@ class Login {
         }
 
         // Optional permissions
-        // $permissions = ['email', 'ads_read', 'ads_management', 'manage_pages'];
-        $permissions = ['email', 'business_management', 'manage_pages', 'pages_show_list', 'ads_management', 'business_management', 'public_profile', 'ads_read'];
-        $url = $helper->getLoginUrl($this->callback_url, $permissions);
+        $url = $helper->getLoginUrl($this->callback_url, $this->permissions);
 
         return $url;
 
