@@ -5,7 +5,7 @@ use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 
 /**
- * Class ApprFacebook
+ * Class Login
  */
 class Login {
 
@@ -48,7 +48,7 @@ class Login {
      * User details from the API
      */
     public $fb;
-    public $permissions;
+    private $permissions;
 
 
     /**
