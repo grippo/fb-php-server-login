@@ -11,6 +11,19 @@ composer require facebook/graph-sdk
 composer require grippo/fb-php-server-login
 ```
 
+## Usage: INI File ".config.ini"
+
+```sh
+[facebook]
+app_id={{ the app id }}
+app_secret={{ the app secret }}
+callback_url={{ the callback url }}
+permissions[]=email
+permissions[]={{ other permission }}
+permissions[]={{ other permission }}
+
+```
+
 ## Usage: login
 
 
