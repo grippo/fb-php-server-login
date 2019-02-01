@@ -58,7 +58,7 @@ class Login {
     public function __construct($appId, $appSecret, $appCallBack, $permissions) {
       $this->app_id = $appId;
       $this->app_secret = $appSecret;
-      $this->callback_url = $appCallback;
+      $this->callback_url = $appCallBack;
       $this->permissions = $permissions;
 
         //    'persistent_data_handler' => 'session'
