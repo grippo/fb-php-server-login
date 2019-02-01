@@ -72,6 +72,26 @@ if (array_key_exists('facebook_access_token', $_SESSION) && isset($_SESSION['fac
 
 ```
 
+## Usage: Making calls to Facebook Graph API
+
+
+```php
+
+        try {
+          $response = $this->fb->get(
+            '/me',
+            $_SESSION['facebook_access_token'];
+          );
+        } catch(Facebook\Exceptions\FacebookResponseException $e) {
+          echo $e->getMessage();
+        } catch(Facebook\Exceptions\FacebookSDKException $e) {
+          echo $e->getMessage();
+        }
+        $retValue = $response->getGraphUser();
+        print_r($retValue);
+ 
+```
+
 ## Contributing
 
 

@@ -115,23 +115,5 @@ class Login {
 
    }
 
-
-    public function id() {
-
-        try {
-          // Returns a `Facebook\FacebookResponse` object
-          $response = $this->fb->get(
-            '/me'
-          );
-        } catch(Facebook\Exceptions\FacebookResponseException $e) {
-          $_COOKIE['facebook_message'] = $e->getMessage();
-          return null;
-        } catch(Facebook\Exceptions\FacebookSDKException $e) {
-          $_COOKIE['facebook_message'] = $e->getMessage();
-          return null;
-        }
-        $retValue = $response->getGraphUser();
-
-    }
 }
 
