@@ -86,7 +86,7 @@ class Login {
     }
 
 
-    public function getToken($response) {
+    public function getToken() {
 
         // Assign the Session variable for Facebook
         $helper = $this->fb->getRedirectLoginHelper();

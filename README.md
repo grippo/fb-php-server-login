@@ -11,22 +11,50 @@ composer require facebook/graph-sdk
 composer require grippo/fb-php-server-login
 ```
 
-## Usage
+## Usage: login
 
-Simple GET example of a user's profile.
 
 ```php
-require_once __DIR__ . '/vendor/autoload.php'; // change path as needed
 
-$fb = new \FbServer\Login([
-  'app_id' => '{app-id}',
-  'app_secret' => '{app-secret}',
-  'default_graph_version' => 'v2.10',
-  //'default_access_token' => '{access-token}', // optional
-]);
+if(!session_id()) {
+    session_start();
+}
 
-$me = $response->getGraphUser();
-echo 'Logged in as ' . $me->getName();
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/grippo/fb-php-server-login/src/FbServer/Login.php';
+
+use Login;
+
+// Is user logged in?
+if (array_key_exists('facebook_access_token', $_SESSION) && isset($_SESSION['facebook_access_token']))
+{
+	// user is logged in
+} else {
+	$config = parse_ini_file('../.config.ini', true);
+    $login = new Login($config['facebook']['app_id'], $config['facebook']['app_secret'], $config['facebook']['callback_url'], $config['facebook']['permissions']);
+	$url = $login->getLoginUrl();
+	// redirect to $url to login
+}
+
+
+```
+
+## Usage: Callback
+
+
+```php
+
+   $config = parse_ini_file('../.config.ini', true);
+   $login = new Login($config['facebook']['app_id'], $config['facebook']['app_secret'], $config['facebook']['callback_url'], $config['facebook']['permissions']);
+   $accessToken = $login->getToken(); 
+   if (isset($accessToken)) {
+        $_SESSION['facebook_access_token'] = (string) $accessToken;
+        echo "User logged in!"
+    } else {
+        echo "Not logged in: ". $_COOKIE['facebook_message'] . "\n";
+    } 
+ 
+
 ```
 
 ## Contributing
