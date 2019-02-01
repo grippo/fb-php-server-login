@@ -55,7 +55,7 @@ class Login {
      * ApprFacebook constructor.
      */
     //        'persistent_data_handler' => 'session'
-    public function __construct(appId, appSecret, appCallBack) {
+    public function __construct($appId, $appSecret, $appCallBack) {
       $this->app_id = $appId;
       $this->app_secret = $appSecret;
       $this->callback_url = $appCallback;
