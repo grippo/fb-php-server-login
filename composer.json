@@ -1,0 +1,16 @@
+{
+    "name": "grippo/fb-php-server-login",
+    "description": "Facebook Login server to server",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jorge Grippo",
+            "email": "jorge.grippo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+       "facebook/graph-sdk" : "~5"
+    }
+}
