@@ -55,18 +55,17 @@ class Login {
      * ApprFacebook constructor.
      */
     //        'persistent_data_handler' => 'session'
-    public function __construct()
-    {
-
+    public function __construct(appId, appSecret, appCallBack) {
+      $this->app_id = $appId;
+      $this->app_secret = $appSecret;
+      $this->callback_url = $appCallback;
         //    'persistent_data_handler' => 'session'
         $this->fb = new Facebook([
             'app_id' => $this->app_id,
             'app_secret' => $this->app_secret,
             'default_graph_version' => 'v3.2'
         ]);
-        return $this->fb;
-
- 
+        return $this->fb; 
     }
 
     public function getLoginUrl() {
