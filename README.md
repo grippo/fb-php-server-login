@@ -28,6 +28,7 @@ permissions[]={{ other permission }}
 
 ## Usage: login
 
+This code executes whenever the user clicks on the Login Button.
 
 ```php
 
@@ -46,7 +47,7 @@ if (array_key_exists('facebook_access_token', $_SESSION) && isset($_SESSION['fac
 	// user is logged in
 } else {
 	$config = parse_ini_file('../.config.ini', true);
-    $login = new Login($config['facebook']['app_id'], $config['facebook']['app_secret'], $config['facebook']['callback_url'], $config['facebook']['permissions']);
+	$login = new Login($config['facebook']['app_id'], $config['facebook']['app_secret'], $config['facebook']['callback_url'], $config['facebook']['permissions']);
 	$url = $login->getLoginUrl();
 	// redirect to $url to login
 }
@@ -56,39 +57,42 @@ if (array_key_exists('facebook_access_token', $_SESSION) && isset($_SESSION['fac
 
 ## Usage: Callback
 
+This code executes after the Facebook dialog returns to the callback url.
 
 ```php
 
-   $config = parse_ini_file('../.config.ini', true);
-   $login = new Login($config['facebook']['app_id'], $config['facebook']['app_secret'], $config['facebook']['callback_url'], $config['facebook']['permissions']);
-   $accessToken = $login->getToken(); 
-   if (isset($accessToken)) {
-        $_SESSION['facebook_access_token'] = (string) $accessToken;
-        echo "User logged in!"
-    } else {
-        echo "Not logged in: ". $_COOKIE['facebook_message'] . "\n";
-    } 
+$config = parse_ini_file('../.config.ini', true);
+$login = new Login($config['facebook']['app_id'], $config['facebook']['app_secret'], $config['facebook']['callback_url'], $config['facebook']['permissions']);
+$accessToken = $login->getToken(); 
+if (isset($accessToken)) {
+    $_SESSION['facebook_access_token'] = (string) $accessToken;
+    echo "User logged in!"
+} else {
+    echo "Not logged in: ". $_COOKIE['facebook_message'] . "\n";
+} 
  
 
 ```
 
 ## Usage: Making calls to Facebook Graph API
 
+When we have an access_token, we are able to make graph API calls.
+
 
 ```php
 
-	try {
-	  $response = $login->fb->get(
-	    '/me',
-	    $_SESSION['facebook_access_token'];
-	  );
-	} catch(Facebook\Exceptions\FacebookResponseException $e) {
-	  echo $e->getMessage();
-	} catch(Facebook\Exceptions\FacebookSDKException $e) {
-	  echo $e->getMessage();
-	}
-	$retValue = $response->getGraphUser();
-	print_r($retValue);
+try {
+  $response = $login->fb->get(
+    '/me',
+    $_SESSION['facebook_access_token']
+  );
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+  echo $e->getMessage();
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+  echo $e->getMessage();
+}
+$retValue = $response->getGraphUser();
+print_r($retValue);
  
 ```
 
