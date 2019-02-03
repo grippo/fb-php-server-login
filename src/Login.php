@@ -65,7 +65,7 @@ class Login {
       $this->permissions = $permissions;
 
         //    'persistent_data_handler' => 'session'
-        $this->fb = new Facebook([
+        $this->fb = new \Facebook\Facebook([
             'app_id' => $this->app_id,
             'app_secret' => $this->app_secret,
             'default_graph_version' => 'v3.2'
@@ -96,11 +96,11 @@ class Login {
 
         try {
           $accessToken = $helper->getAccessToken();
-        } catch(Facebook\Exceptions\FacebookResponseException $e) {
+        } catch(\Facebook\Exceptions\FacebookResponseException $e) {
           // When Graph returns an error
           $_COOKIE['facebook_message'] = $e->getMessage();
           return null;
-         } catch(Facebook\Exceptions\FacebookSDKException $e) {
+         } catch(\Facebook\Exceptions\FacebookSDKException $e) {
           // When validation fails or other local issues
           $_COOKIE['facebook_message'] = $e->getMessage();
           return null;
