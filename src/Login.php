@@ -4,6 +4,8 @@ use Facebook\Facebook;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 
+namespace Login;
+
 /**
  * Class Login
  */
