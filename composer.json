@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Facebook\\Server\\Web\\": "src/"
+            "FbServer\\": "src/"
         }
     }
 }
