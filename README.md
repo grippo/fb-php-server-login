@@ -45,7 +45,12 @@ if (array_key_exists('facebook_access_token', $_SESSION) && isset($_SESSION['fac
 	// user is logged in
 } else {
 	$config = parse_ini_file('../.config.ini', true);
-	$login = new Login($config['facebook']['app_id'], $config['facebook']['app_secret'], $config['facebook']['callback_url'], $config['facebook']['permissions']);
+	$login = new Login(
+		$config['facebook']['app_id'], 
+		$config['facebook']['app_secret'], 
+		$config['facebook']['callback_url'], 
+		$config['facebook']['permissions']
+	);
 	$url = $login->getLoginUrl();
 	// redirect to $url to login
 }
@@ -60,7 +65,12 @@ This code executes after the Facebook dialog returns to the callback url.
 ```php
 
 $config = parse_ini_file('../.config.ini', true);
-$login = new Login($config['facebook']['app_id'], $config['facebook']['app_secret'], $config['facebook']['callback_url'], $config['facebook']['permissions']);
+$login = new Login(
+	$config['facebook']['app_id'], 
+	$config['facebook']['app_secret'], 
+	$config['facebook']['callback_url'], 
+	$config['facebook']['permissions']
+);
 $accessToken = $login->getToken(); 
 if (isset($accessToken)) {
     $_SESSION['facebook_access_token'] = (string) $accessToken;
@@ -80,14 +90,14 @@ When we have an access_token, we are able to make graph API calls.
 ```php
 
 try {
-  $response = $login->fb->get(
-    '/me',
-    $_SESSION['facebook_access_token']
-  );
+	$response = $login->fb->get(
+		'/me',
+		$_SESSION['facebook_access_token']
+  	);
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
-  echo $e->getMessage();
+	echo $e->getMessage();
 } catch(Facebook\Exceptions\FacebookSDKException $e) {
-  echo $e->getMessage();
+	echo $e->getMessage();
 }
 $retValue = $response->getGraphUser();
 print_r($retValue);
