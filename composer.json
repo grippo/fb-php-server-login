@@ -10,12 +10,14 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0",
-       "facebook/graph-sdk" : "~5"
+      "php": ">=5.5",
+       "facebook/graph-sdk" : ">=5.0.0"
     },
     "autoload": {
         "psr-4": {
             "FbServer\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
