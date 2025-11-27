@@ -1,4 +1,4 @@
-# Facebook Login for PHP (v1)
+# Facebook Login for PHP (v2)
 
 This repository contains the open source PHP files that allows you to access the Facebook Platform from your PHP app, server to server, without Javascript.
 
