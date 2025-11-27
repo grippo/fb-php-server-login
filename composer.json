@@ -10,8 +10,7 @@
         }
     ],
     "require": {
-      "php": ">=5.5",
-       "facebook/graph-sdk" : ">=5.0.0"
+      "php": ">=5.5"
     },
     "autoload": {
         "psr-4": {
